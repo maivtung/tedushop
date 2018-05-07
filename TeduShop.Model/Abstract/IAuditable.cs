@@ -4,12 +4,14 @@ namespace TeduShop.Model.Abstract
 {
     public interface IAuditable
     {
-        DateTime? CreatedDate { get; set; }
-        string CreateBy { get; set; }
-        DateTime? UpdateDate { get; set; }
-        string UpdateBy { get; set; }
-        string MetaKeyword { get; set; }
-        string MetaDescription { get; set; }
-        bool Status { get; set; }
+        DateTime? CreatedDate { set; get; }
+        string CreatedBy { set; get; }
+        DateTime? UpdatedDate { set; get; }
+        string UpdatedBy { set; get; }
+
+        string MetaKeyword { set; get; }
+        string MetaDescription { set; get; }
+
+        bool Status { set; get; }
     }
 }
