@@ -5,18 +5,22 @@ namespace TeduShop.Model.Abstract
 {
     public abstract class Auditable : IAuditable
     {
-        public DateTime? CreatedDate { get; set; }
+        public DateTime? CreatedDate { set; get; }
 
         [MaxLength(256)]
-        public string CreateBy { get; set; }
+        public string CreatedBy { set; get; }
 
-        public DateTime? UpdateDate { get; set; }
+        public DateTime? UpdatedDate { set; get; }
 
         [MaxLength(256)]
-        public string UpdateBy { get; set; }
+        public string UpdatedBy { set; get; }
 
-        public string MetaKeyword { get; set; }
-        public string MetaDescription { get; set; }
-        public bool Status { get; set; }
+        [MaxLength(256)]
+        public string MetaKeyword { set; get; }
+
+        [MaxLength(256)]
+        public string MetaDescription { set; get; }
+
+        public bool Status { set; get; }
     }
 }

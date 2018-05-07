@@ -4,20 +4,21 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace TeduShop.Model.Models
 {
     [Table("ProductTags")]
-    internal class ProductTag
+    public class ProductTag
     {
         [Key]
-        public int ProductID { get; set; }
+        [Column(Order = 1)]
+        public int ProductID { set; get; }
 
         [Key]
-        [Column(TypeName = "Varchar")]
+        [Column(TypeName = "varchar", Order = 2)]
         [MaxLength(50)]
-        public string TagID { get; set; }
+        public string TagID { set; get; }
 
         [ForeignKey("ProductID")]
-        public virtual Product Products { get; set; }
+        public virtual Product Product { set; get; }
 
         [ForeignKey("TagID")]
-        public virtual Tag Tag { get; set; }
+        public virtual Tag Tag { set; get; }
     }
 }
