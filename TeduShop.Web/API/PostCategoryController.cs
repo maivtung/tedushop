@@ -1,39 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using TeduShop.Model.Models;
+using TeduShop.Service;
+using TeduShop.Web.Infratructure.Core;
 
 namespace TeduShop.Web.API
 {
-    public class PostCategoryController : ApiController
+    public class PostCategoryController : ApiControllerBase
     {
-        // GET api/<controller>
-        public IEnumerable<string> Get()
+        IPostCategoryService _postCategoryService;
+        public PostCategoryController(IErrorService errorService, IPostCategoryService postCategoryService):base(errorService)
         {
-            return new string[] { "value1", "value2" };
+            this._postCategoryService = postCategoryService;
         }
+        public HttpResponseMessage Creat(HttpRequestMessage request,PostCategory postcategory)
+        {
+            return CreateHttpResponse(request, () =>
+            {
+                HttpResponseMessage response = null;
+                if (ModelState.IsValid)
+                {
+                    request.CreateErrorResponse(HttpStatusCode.BadRequest,modelState)
+                }
+                else
+                {
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
+                }
+                return response; 
+            });
         }
-
-        // POST api/<controller>
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE api/<controller>/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
